@@ -84,15 +84,7 @@ Leave as `None` for equal weighting (most common).
 - **Data handling**: `polars` (output format), `pandas`, `numpy`
 - **Kaggle-specific**: `kaggle_evaluation.rsna_inference_server` (competition framework)
 
-## Common Pitfalls & Solutions
 
-| Issue | Solution |
-|-------|----------|
-| Model doesn't load | Check `/kaggle/input/rsna2025-effnetv2-32ch/` path and fold naming convention |
-| Slice ordering incorrect | Verify `ImagePositionPatient` extraction and z-position sorting logic |
-| Out of memory on inference | Ensure `gc.collect()` is called; check if large arrays leak between series |
-| Predictions all ~0.5 | Check model is in `.eval()` mode and sigmoid is applied to raw logits |
-| Shape mismatch errors | Verify transpose is applied before augmentation: (D,H,W) → (H,W,D) |
 
 ## Testing & Validation
 - Local development: Run with `inference_server.run_local_gateway()` (no environment variable set)
